@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farah Beseiso | Mütercim ve Tercümanlık Portfolyosu</title>
+  
+  <style>
+    /* ==========================================================================
+       1. RENKLER VE TEMA AYARLARI (LACİVERT VE KREM PALETİ)
+       İleride renkleri değiştirmek isterseniz bu kodları düzenleyebilirsiniz.
+       ========================================================================== */
+    :root {
+      /* Ana Krem Tonları (Arka plan ve yumuşak yüzeyler) */
+      --bg-cream: #faf7f2;          /* Ana sayfa arka planı (Krem) */
+      --bg-card: #ffffff;           /* Kart arka planı (Kırık beyaz) */
+      --bg-cream-dark: #f0ebe1;     /* Vurgulu açık krem */
+      --border-cream: #e6ded3;      /* İnce krem kenarlıklar */
+      
+      /* Ana Lacivert Tonları (Yazılar, başlıklar ve kurumsal detaylar) */
+      --navy-deep: #0c1824;         /* Çok koyu gece laciverti */
+      --navy-primary: #152538;      /* Ana lacivert (Başlıklar ve ana butonlar) */
+      --navy-slate: #243850;        /* Orta ton lacivert */
+      --navy-soft: #3e5674;         /* Açık lacivert (İkincil yazılar) */
+      --navy-subtle: #6b829d;       /* Koyu krem üzerindeki soluk lacivert */
+      
+      /* Vurgu / Aksan Rengi (Zarif sıcak dokunuş) */
+      --accent-warm: #c59b66;       /* Sıcak altın / taba dokunuşu */
+      --accent-light: #f7f1e7;      /* Çok hafif altın krem */
+
+      /* Gölgeler ve Yuvarlatmalar */
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 4px 20px -2px rgba(12, 24, 36, 0.05);
+      --shadow-hover: 0 10px 28px -4px rgba(12, 24, 36, 0.1);
+      
+      --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-serif: "Georgia", "Cambria", "Times New Roman", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--navy-primary);
+      font-family: var(--font-main);
+      line-height: 1.65;
+      font-size: 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ==========================================================================
+       2. ÜST MENÜ (NAVBAR) & DİL DEĞİŞTİRME BUTONU
+       ========================================================================== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-cream);
+      transition: all 0.2s ease;
+    }
+
+    .nav-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--navy-deep);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      background: var(--navy-primary);
+      color: var(--bg-cream);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--navy-soft);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--navy-deep);
+    }
+
+    /* TR / EN Dil Değiştirici Butonu */
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border-cream);
+      border-radius: 100px;
+      padding: 3px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+      box-shadow: 0 1px 2px rgba(12, 24, 36, 0.04);
+      user-select: none;
+    }
+
+    .lang-opt {
+      padding: 4px 10px;
+      border-radius: 100px;
+      color: var(--navy-soft);
+      transition: all 0.2s ease;
+    }
+
+    .lang-opt.active {
+      background: var(--navy-primary);
+      color: var(--bg-cream);
+    }
+
+    /* Mobil Menü Butonu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--navy-deep);
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    /* ==========================================================================
+       3. ORTAK BİLEŞENLER & KONTEYNER
+       ========================================================================== */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border-cream);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-warm);
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--navy-deep);
+      font-family: var(--font-serif);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-navy {
+      background: var(--navy-primary);
+      color: var(--bg-cream);
+    }
+
+    .btn-navy:hover {
+      background: var(--navy-deep);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--navy-primary);
+      color: var(--navy-primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--navy-primary);
+      color: var(--bg-cream);
+      transform: translateY(-1px);
+    }
+
+    /* Eksik bilgileri belirten zarif etiket */
+    .placeholder-badge {
+      display: inline-block;
+      background: #fff3dc;
+      color: #8c5b05;
+      border: 1px dashed #dcb368;
+      border-radius: 4px;
+      padding: 1px 7px;
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+
+    /* ==========================================================================
+       4. GİRİŞ BÖLÜMÜ (HERO) & YAZILAN İSİM ANİMASYONU
+       ========================================================================== */
+    .hero {
+      padding: 70px 0 60px 0;
+    }
+
+    .hero-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-cream-dark);
+      border: 1px solid var(--border-cream);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      color: var(--navy-slate);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-meta-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-warm);
+    }
+
+    /* Daktilo Efektli İsim */
+    .typewriter-title {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--navy-deep);
+      line-height: 1.15;
+      margin-bottom: 12px;
+      min-height: 1.2em; /* Zıplamayı önler */
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 0.9em;
+      background-color: var(--accent-warm);
+      margin-left: 4px;
+      animation: blink 0.8s infinite;
+      vertical-align: baseline;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--navy-slate);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .hero-bio {
+      font-size: 1.1rem;
+      color: var(--navy-soft);
+      max-width: 680px;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    /* Çevirmen Dokunuşu: Dil Köprüsü Kartı (Translation Metaphor) */
+    .translation-badge-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cream);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: var(--shadow-soft);
+      flex-wrap: wrap;
+    }
+
+    .tb-side {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tb-lang-code {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      background: var(--bg-cream-dark);
+      color: var(--navy-deep);
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+    }
+
+    .tb-arrow {
+      color: var(--accent-warm);
+      display: flex;
+      align-items: center;
+    }
+
+    .tb-note {
+      font-size: 0.84rem;
+      color: var(--navy-soft);
+      border-left: 2px solid var(--border-cream);
+      padding-left: 12px;
+    }
+
+    /* ==========================================================================
+       5. HAKKIMDA BÖLÜMÜ
+       ========================================================================== */
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cream);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .about-text {
+      font-size: 1.05rem;
+      color: var(--navy-primary);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .languages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .lang-card {
+      background: var(--bg-cream);
+      border: 1px solid var(--border-cream);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+    }
+
+    .lang-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .lang-name {
+      font-weight: 700;
+      color: var(--navy-deep);
+      font-size: 0.95rem;
+    }
+
+    .lang-level {
+      font-size: 0.75rem;
+      color: var(--navy-soft);
+      font-weight: 600;
+      background: var(--bg-card);
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid var(--border-cream);
+    }
+
+    /* ==========================================================================
+       6. PROJELER VE ÇALIŞMALAR BÖLÜMÜ
+       ========================================================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cream);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+      border-color: var(--navy-slate);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      gap: 12px;
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      font-family: var(--font-serif);
+    }
+
+    .project-desc {
+      color: var(--navy-soft);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-top: 1px solid var(--bg-cream);
+      padding-top: 14px;
+    }
+
+    .tag-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag-pill {
+      background: var(--bg-cream);
+      color: var(--navy-slate);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 4px;
+      border: 1px solid var(--border-cream);
+    }
+
+    .project-link {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy-primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.15s ease;
+    }
+
+    .project-link:hover {
+      gap: 8px;
+      color: var(--accent-warm);
+    }
+
+    /* ==========================================================================
+       7. BECERİLER BÖLÜMÜ
+       ========================================================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cream);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .skill-category {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-cream);
+    }
+
+    .skill-category svg {
+      color: var(--accent-warm);
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-badge {
+      background: var(--bg-cream);
+      border: 1px solid var(--border-cream);
+      color: var(--navy-primary);
+      padding: 5px 11px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       8. DENEYİM BÖLÜMÜ (İSTEĞE BAĞLI / OPSİYONEL)
+       ========================================================================== */
+    .timeline {
+      position: relative;
+      padding-left: 24px;
+      border-left: 2px solid var(--border-cream);
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .timeline-item {
+      position: relative;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -31px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent-warm);
+      border: 3px solid var(--bg-cream);
+    }
+
+    .timeline-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cream);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+      gap: 8px;
+    }
+
+    .timeline-role {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+    }
+
+    .timeline-date {
+      font-size: 0.8rem;
+      color: var(--navy-soft);
+      font-weight: 600;
+    }
+
+    .timeline-org {
+      font-size: 0.9rem;
+      color: var(--accent-warm);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* ==========================================================================
+       9. İLGİ ALANLARI & HOBİLER
+       ========================================================================== */
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+
+    .interest-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cream);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .interest-icon-box {
+      width: 42px;
+      height: 42px;
+      background: var(--bg-cream);
+      border: 1px solid var(--border-cream);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy-primary);
+      flex-shrink: 0;
+    }
+
+    .interest-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy-deep);
+    }
+
+    /* ==========================================================================
+       10. İLETİŞİM BÖLÜMÜ
+       ========================================================================== */
+    .contact-card {
+      background: var(--navy-deep);
+      color: var(--bg-cream);
+      border-radius: var(--radius-lg);
+      padding: 38px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-text-box h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .contact-text-box p {
+      color: #b0c4de;
+      font-size: 1rem;
+      max-width: 580px;
+    }
+
+    .contact-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .contact-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      text-decoration: none;
+      color: var(--bg-cream);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.18s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-2px);
+      border-color: var(--accent-warm);
+    }
+
+    .contact-item svg {
+      color: var(--accent-warm);
+      flex-shrink: 0;
+    }
+
+    .contact-item-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-item-label {
+      font-size: 0.75rem;
+      color: #8da4be;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-item-val {
+      font-size: 0.9rem;
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    /* ==========================================================================
+       11. ALT BİLGİ (FOOTER)
+       ========================================================================== */
+    footer {
+      background: var(--bg-cream-dark);
+      border-top: 1px solid var(--border-cream);
+      padding: 28px 20px;
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--navy-soft);
+    }
+
+    /* ==========================================================================
+       12. MOBİL UYUMLULUK VE ERGONOMİ (RESPONSIVE)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; /* Mobilde sade görünüm için */
+      }
+
+      .hero {
+        padding: 44px 0 36px 0;
+      }
+
+      .typewriter-title {
+        font-size: 2.1rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .translation-badge-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .tb-note {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--border-cream);
+        padding-top: 8px;
+        width: 100%;
+      }
+
+      .contact-card {
+        padding: 26px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       ÜST MENÜ (NAVBAR)
+       Burada sitenizin adı, menü linkleri ve TR-EN geçiş butonu yer alır.
+       ========================================================================== -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <span class="brand-badge">FB</span>
+        <span>Farah Beseiso</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about" data-tr="Hakkımda" data-en="About">Hakkımda</a></li>
+          <li><a href="#projects" data-tr="Projelerim" data-en="Projects">Projelerim</a></li>
+          <li><a href="#skills" data-tr="Becerilerim" data-en="Skills">Becerilerim</a></li>
+          <li><a href="#experience" data-tr="Deneyim" data-en="Experience">Deneyim</a></li>
+          <li><a href="#contact" data-tr="İletişim" data-en="Contact">İletişim</a></li>
+        </ul>
+      </nav>
+
+      <!-- TR / EN Dil Geçiş Düğmesi -->
+      <div class="lang-switcher" id="langSwitchBtn" title="Dili Değiştir / Change Language">
+        <span class="lang-opt active" id="btnLangTR">TR</span>
+        <span class="lang-opt" id="btnLangEN">EN</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         BÖLÜM 1: GİRİŞ (HERO)
+         Açılışta daktilo efektiyle Farah Beseiso yazılır.
+         ========================================================================== -->
+    <section class="hero">
+      <div class="container">
+        <!-- Okul ve Sınıf Bilgisi Rozeti -->
+        <div class="hero-meta">
+          <span class="hero-meta-dot"></span>
+          <span data-tr="İstanbul Yeni Yüzyıl Üniversitesi • Mütercim ve Tercümanlık (4. Sınıf)"
+                data-en="Istanbul Yeni Yuzyil University • Translation and Interpreting (Senior)">
+            İstanbul Yeni Yüzyıl Üniversitesi • Mütercim ve Tercümanlık (4. Sınıf)
+          </span>
+        </div>
+
+        <!-- Daktilo efektiyle beliren isim -->
+        <h1 class="typewriter-title">
+          <span id="typewriterText"></span><span class="cursor"></span>
+        </h1>
+
+        <!-- Kendinizi anlatan unvan / cümle -->
+        <h2 class="hero-subtitle" data-tr="Çevirmen Adayı & Yerelleştirme Meraklısı" data-en="Prospective Translator & Localization Enthusiast">
+          Çevirmen Adayı & Yerelleştirme Meraklısı
+        </h2>
+
+        <!-- Kendinizi tek cümleyle anlattığınız alan -->
+        <p class="hero-bio" 
+           data-tr="Oyun yerelleştirmesiyle ilgilenen bir çevirmen adayıyım." 
+           data-en="I am a prospective translator passionate about game localization and multilingual communication.">
+          Oyun yerelleştirmesiyle ilgilenen bir çevirmen adayıyım.
+        </p>
+
+        <!-- Butonlar -->
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-navy" data-tr="İletişime Geç →" data-en="Get in Touch →">İletişime Geç →</a>
+          <a href="#projects" class="btn btn-outline" data-tr="Çalışmalarımı İncele" data-en="View Works">Çalışmalarımı İncele</a>
+        </div>
+
+        <!-- Çevirmen olduğunuzu gösteren özel detay: Dil Köprüsü Kartı -->
+        <div class="translation-badge-card">
+          <div class="tb-side">
+            <span class="tb-lang-code">EN</span>
+            <span class="tb-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8v12M17 20l4-4M17 20l-4-4"/>
+              </svg>
+            </span>
+            <span class="tb-lang-code">TR</span>
+            <span style="font-size: 0.88rem; font-weight: 600; color: var(--navy-deep);" data-tr="İngilizce ⇄ Türkçe" data-en="English ⇄ Turkish">
+              İngilizce ⇄ Türkçe
+            </span>
+          </div>
+
+          <div class="tb-note">
+            <span data-tr="Ayrıca: Almanca (Başlangıç) • Kültürlerarası Doğru ve Akıcı Aktarım" 
+                  data-en="Also: German (Elementary) • Accurate and Natural Cross-cultural Transfer">
+              Ayrıca: Almanca (Başlangıç) • Kültürlerarası Doğru ve Akıcı Aktarım
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BÖLÜM 2: HAKKIMDA
+         Verdiğiniz "çünkü dilleri seviyorum ve daha fazlasını öğrenmek istiyorum" cümlesi buradadır.
+         ========================================================================== -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-tr="01 // BEN KİMİM" data-en="01 // ABOUT ME">01 // BEN KİMİM</span>
+          <h2 class="section-title" data-tr="Hakkımda" data-en="About Me">Hakkımda</h2>
+        </div>
+
+        <div class="about-card">
+          <!-- Hakkımda Metni: Dilediğiniz gibi ekleme yapabilirsiniz -->
+          <p class="about-text" 
+             data-tr="Dilleri çok seviyorum ve her geçen gün daha fazlasını öğrenmek istiyorum. İstanbul Yeni Yüzyıl Üniversitesi Mütercim ve Tercümanlık bölümü 4. sınıf öğrencisi olarak akademik eğitimimi uygulamalı çeviri, terminoloji yönetimi ve oyun yerelleştirmesi alanlarında derinleştiriyorum. [Hakkınızda eklemek istediğiniz diğer 1-2 cümleyi buraya ekleyin]" 
+             data-en="I love languages and continually seek to learn more every day. As a senior Translation and Interpreting student at Istanbul Yeni Yuzyil University, I deepen my academic training in applied translation, terminology management, and game localization. [Add 1-2 more sentences about yourself here]">
+            Dilleri çok seviyorum ve her geçen gün daha fazlasını öğrenmek istiyorum. İstanbul Yeni Yüzyıl Üniversitesi Mütercim ve Tercümanlık bölümü 4. sınıf öğrencisi olarak akademik eğitimimi uygulamalı çeviri, terminoloji yönetimi ve oyun yerelleştirmesi alanlarında derinleştiriyorum. <span class="placeholder-badge">[Hakkınızda eklemek istediğiniz diğer 1-2 cümleyi buraya ekleyin]</span>
+          </p>
+
+          <!-- Çalışma Dilleri -->
+          <div style="margin-top: 24px;">
+            <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--navy-slate); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;"
+                data-tr="Çalışma Dillerim" data-en="Working Languages">
+              Çalışma Dillerim
+            </h3>
+            
+            <div class="languages-grid">
+              <div class="lang-card">
+                <div class="lang-card-header">
+                  <span class="lang-name" data-tr="İngilizce" data-en="English">İngilizce</span>
+                  <span class="lang-level" data-tr="İleri Düzey (C1/C2)" data-en="Advanced (C1/C2)">İleri Düzey (C1/C2)</span>
+                </div>
+                <div style="font-size: 0.8rem; color: var(--navy-soft);" data-tr="Ana çalışma ve çeviri dili" data-en="Primary working language">
+                  Ana çalışma ve çeviri dili
+                </div>
+              </div>
+
+              <div class="lang-card">
+                <div class="lang-card-header">
+                  <span class="lang-name" data-tr="Türkçe" data-en="Turkish">Türkçe</span>
+                  <span class="lang-level" data-tr="Ana Dil" data-en="Native">Ana Dil</span>
+                </div>
+                <div style="font-size: 0.8rem; color: var(--navy-soft);" data-tr="Hedef ve kaynak dil yetkinliği" data-en="Native fluency & eloquence">
+                  Hedef ve kaynak dil yetkinliği
+                </div>
+              </div>
+
+              <div class="lang-card">
+                <div class="lang-card-header">
+                  <span class="lang-name" data-tr="Almanca" data-en="German">Almanca</span>
+                  <span class="lang-level" data-tr="Başlangıç" data-en="Elementary (A1/A2)">Başlangıç</span>
+                </div>
+                <div style="font-size: 0.8rem; color: var(--navy-soft);" data-tr="Geliştirilmekte olan dil" data-en="Currently learning">
+                  Geliştirilmekte olan dil
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BÖLÜM 3: PROJELERİM / ÇALIŞMALARIM
+         Her proje için Ad, Açıklama ve Bağlantı alanları aşağıdadır.
+         ========================================================================== -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-tr="02 // PORTFOLYO" data-en="02 // PORTFOLIO">02 // PORTFOLYO</span>
+          <h2 class="section-title" data-tr="Projelerim ve Çalışmalarım" data-en="Projects & Works">Projelerim ve Çalışmalarım</h2>
+        </div>
+
+        <div class="projects-grid">
+          <!-- PROJE 1 -->
+          <div class="project-card">
+            <div>
+              <div class="project-top">
+                <h3 class="project-title" 
+                    data-tr="[Proje 1 Adı - buraya ekle]" 
+                    data-en="[Project 1 Title - add here]">
+                  <span class="placeholder-badge">[Proje 1 Adı - buraya ekle]</span>
+                </h3>
+                <span class="tag-pill" data-tr="Oyun Yerelleştirme" data-en="Game Localization">Oyun Yerelleştirme</span>
+              </div>
+
+              <p class="project-desc" 
+                 data-tr="[Bu projenin konusunu, çevirdiğiniz oyun veya metin türünü, hedef kitleyi ve kullandığınız yaklaşımları 1-2 cümleyle buraya ekleyin.]"
+                 data-en="[Add 1-2 sentences explaining this project, translation genre, target audience, and your methodology here.]">
+                <span class="placeholder-badge">[Bu projenin konusunu, çevirdiğiniz oyun veya metin türünü, hedef kitleyi ve kullandığınız yaklaşımları 1-2 cümleyle buraya ekleyin.]</span>
+              </p>
+            </div>
+
+            <div class="project-footer">
+              <div class="tag-pills">
+                <span class="tag-pill">İngilizce → Türkçe</span>
+                <span class="tag-pill">memoQ / Trados</span>
+                <span class="tag-pill"><span class="placeholder-badge">[Araç/Format ekle]</span></span>
+              </div>
+
+              <!-- Varsa proje linki, yoksa '#' bırakabilirsiniz -->
+              <a href="#" class="project-link" data-tr="Projeyi İncele →" data-en="View Project →">
+                <span>Projeyi İncele</span> →
+              </a>
+            </div>
+          </div>
+
+          <!-- PROJE 2 -->
+          <div class="project-card">
+            <div>
+              <div class="project-top">
+                <h3 class="project-title" 
+                    data-tr="[Proje 2 Adı - buraya ekle]" 
+                    data-en="[Project 2 Title - add here]">
+                  <span class="placeholder-badge">[Proje 2 Adı - buraya ekle]</span>
+                </h3>
+                <span class="tag-pill" data-tr="Altyazı & Terminoloji" data-en="Subtitling & Terminology">Altyazı & Terminoloji</span>
+              </div>
+
+              <p class="project-desc" 
+                 data-tr="[İkinci çalışmanızın adını, oluşturduğunuz sözlük/terminoloji tablosunu veya altyazı çevirisini 1-2 cümleyle buraya ekleyin.]"
+                 data-en="[Add 1-2 sentences detailing your second project, glossary/terminology management, or audiovisual translation work here.]">
+                <span class="placeholder-badge">[İkinci çalışmanızın adını, oluşturduğunuz sözlük/terminoloji tablosunu veya altyazı çevirisini 1-2 cümleyle buraya ekleyin.]</span>
+              </p>
+            </div>
+
+            <div class="project-footer">
+              <div class="tag-pills">
+                <span class="tag-pill">Altyazı Çevirisi</span>
+                <span class="tag-pill">Terminoloji Yönetimi</span>
+                <span class="tag-pill"><span class="placeholder-badge">[Araç ekle]</span></span>
+              </div>
+
+              <!-- Varsa proje linki -->
+              <a href="#" class="project-link" data-tr="Projeyi İncele →" data-en="View Project →">
+                <span>Projeyi İncele</span> →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Yeni bir proje eklemek isterseniz yukarıdaki 'project-card' kutusunu kopyalayıp buraya yapıştırabilirsiniz -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BÖLÜM 4: BECERİLERİM
+         CAT Araçları, Altyazı, Terminoloji, Canva vb.
+         ========================================================================== -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-tr="03 // YETKİNLİKLER" data-en="03 // COMPETENCIES">03 // YETKİNLİKLER</span>
+          <h2 class="section-title" data-tr="Becerilerim ve Araçlar" data-en="Skills & Tools">Becerilerim ve Araçlar</h2>
+        </div>
+
+        <div class="skills-grid">
+          <!-- CAT Araçları -->
+          <div class="skill-card">
+            <div class="skill-category">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span data-tr="CAT Araçları" data-en="CAT Tools">CAT Araçları</span>
+            </div>
+            <div class="skill-pills">
+              <span class="skill-badge">SDL Trados</span>
+              <span class="skill-badge">memoQ</span>
+              <span class="skill-badge"><span class="placeholder-badge">[Varsa diğer CAT aracı]</span></span>
+            </div>
+          </div>
+
+          <!-- Çeviri Alanları & Uzmanlık -->
+          <div class="skill-card">
+            <div class="skill-category">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <span data-tr="Çeviri & Yerelleştirme" data-en="Translation & Loc">Çeviri & Yerelleştirme</span>
+            </div>
+            <div class="skill-pills">
+              <span class="skill-badge" data-tr="Oyun Yerelleştirmesi" data-en="Game Localization">Oyun Yerelleştirmesi</span>
+              <span class="skill-badge" data-tr="Dizi & Film Altyazısı" data-en="Subtitling">Dizi & Film Altyazısı</span>
+              <span class="skill-badge" data-tr="Terminoloji Yönetimi" data-en="Terminology Management">Terminoloji Yönetimi</span>
+              <span class="skill-badge" data-tr="Metin Düzenleme (QA)" data-en="Proofreading & QA">Metin Düzenleme (QA)</span>
+            </div>
+          </div>
+
+          <!-- Tasarım ve Genel Yazılımlar -->
+          <div class="skill-card">
+            <div class="skill-category">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+              <span data-tr="Tasarım ve Diğer Araçlar" data-en="Design & Other Software">Tasarım ve Diğer Araçlar</span>
+            </div>
+            <div class="skill-pills">
+              <span class="skill-badge">Canva</span>
+              <span class="skill-badge">Microsoft Office</span>
+              <span class="skill-badge"><span class="placeholder-badge">[Varsa diğer programları ekleyin]</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BÖLÜM 5: DENEYİM (STAJ, GÖNÜLLÜ ÇEVİRİ, KULÜP)
+         NOT: Henüz deneyiminiz yoksa bu bölümü komple silebilirsiniz.
+         Varsa aşağıdaki [buraya ekle] kısımlarını doldurabilirsiniz.
+         ========================================================================== -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-tr="04 // GEÇMİŞ ÇALIŞMALAR" data-en="04 // EXPERIENCE">04 // GEÇMİŞ ÇALIŞMALAR</span>
+          <h2 class="section-title" data-tr="Deneyim" data-en="Experience">Deneyim</h2>
+        </div>
+
+        <div class="timeline">
+          <!-- DENEYİM ÖĞESİ -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <span class="timeline-role" 
+                      data-tr="[Göreviniz: ör. Çeviri Stajyeri / Gönüllü Çevirmen / Kulüp Üyesi - buraya ekle]"
+                      data-en="[Role: e.g. Translation Intern / Volunteer Translator - add here]">
+                  <span class="placeholder-badge">[Göreviniz: ör. Çeviri Stajyeri / Gönüllü Çevirmen / Kulüp Üyesi - buraya ekle]</span>
+                </span>
+                <span class="timeline-date" 
+                      data-tr="[Tarih: ör. 2024 - Günümüz]" 
+                      data-en="[Date: e.g. 2024 - Present]">
+                  <span class="placeholder-badge">[Tarih: ör. 2024 - Günümüz]</span>
+                </span>
+              </div>
+
+              <div class="timeline-org" 
+                   data-tr="[Kurum / Şirket / Öğrenci Kulübü Adı - buraya ekle]" 
+                   data-en="[Organization / Company / Student Club - add here]">
+                <span class="placeholder-badge">[Kurum / Şirket / Öğrenci Kulübü Adı - buraya ekle]</span>
+              </div>
+
+              <p style="font-size: 0.92rem; color: var(--navy-soft);" 
+                 data-tr="[Burada yaptığınız çalışmaları, çevirdiğiniz metinleri veya üstlendiğiniz sorumlulukları 1-2 cümleyle açıklayın.]"
+                 data-en="[Briefly describe your tasks, translation outputs, or contributions in 1-2 sentences here.]">
+                <span class="placeholder-badge">[Burada yaptığınız çalışmaları, çevirdiğiniz metinleri veya üstlendiğiniz sorumlulukları 1-2 cümleyle açıklayın.]</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- İPUCU NOTU: Deneyiminiz yoksa yukarıdaki 'section id="experience"' bloğunu silebilirsiniz -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BÖLÜM 6: İLGİ ALANLARI VE HOBİLERİM
+         Dizi altyazısı, fotoğraf, basketbol.
+         ========================================================================== -->
+    <section id="interests">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-tr="05 // KİŞİSEL" data-en="05 // PERSONAL">05 // KİŞİSEL</span>
+          <h2 class="section-title" data-tr="İlgi Alanlarım ve Hobilerim" data-en="Interests & Hobbies">İlgi Alanlarım ve Hobilerim</h2>
+        </div>
+
+        <div class="interests-grid">
+          <!-- Dizi Altyazısı -->
+          <div class="interest-card">
+            <div class="interest-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                <line x1="7" y1="2" x2="7" y2="22"></line>
+                <line x1="17" y1="2" x2="17" y2="22"></line>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <line x1="2" y1="7" x2="7" y2="7"></line>
+                <line x1="2" y1="17" x2="7" y2="17"></line>
+                <line x1="17" y1="17" x2="22" y2="17"></line>
+                <line x1="17" y1="7" x2="22" y2="7"></line>
+              </svg>
+            </div>
+            <div>
+              <div class="interest-title" data-tr="Dizi ve Film Altyazısı" data-en="TV Series & Film Subtitling">Dizi ve Film Altyazısı</div>
+              <div style="font-size: 0.8rem; color: var(--navy-soft);" data-tr="Görsel-işitsel çeviri pratiği" data-en="Audiovisual translation practice">Görsel-işitsel çeviri pratiği</div>
+            </div>
+          </div>
+
+          <!-- Fotoğraf -->
+          <div class="interest-card">
+            <div class="interest-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                <circle cx="12" cy="13" r="4"></circle>
+              </svg>
+            </div>
+            <div>
+              <div class="interest-title" data-tr="Fotoğrafçılık" data-en="Photography">Fotoğrafçılık</div>
+              <div style="font-size: 0.8rem; color: var(--navy-soft);" data-tr="Görsel kompozisyon & detaylar" data-en="Visual composition & details">Görsel kompozisyon & detaylar</div>
+            </div>
+          </div>
+
+          <!-- Basketbol -->
+          <div class="interest-card">
+            <div class="interest-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M4.93 4.93l4.24 4.24"></path>
+                <path d="M14.83 9.17l4.24-4.24"></path>
+                <path d="M14.83 14.83l4.24 4.24"></path>
+                <path d="M9.17 14.83L4.93 19.07"></path>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <line x1="12" y1="2" x2="12" y2="22"></line>
+              </svg>
+            </div>
+            <div>
+              <div class="interest-title" data-tr="Basketbol" data-en="Basketball">Basketbol</div>
+              <div style="font-size: 0.8rem; color: var(--navy-soft);" data-tr="Takım oyunu ve dinamizm" data-en="Team play and agility">Takım oyunu ve dinamizm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BÖLÜM 7: İLETİŞİM
+         Okul e-postası, LinkedIn, GitHub vb.
+         ========================================================================== -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-text-box">
+            <h3 data-tr="Birlikte Çalışalım" data-en="Let's Work Together">Birlikte Çalışalım</h3>
+            <p data-tr="Oyun yerelleştirme, çeviri projeleri, staj ve iş birlikleri için bana aşağıdaki bağlantılardan dilediğiniz zaman ulaşabilirsiniz." 
+               data-en="Feel free to reach out for game localization, translation projects, internships, or professional collaborations.">
+              Oyun yerelleştirme, çeviri projeleri, staj ve iş birlikleri için bana aşağıdaki bağlantılardan dilediğiniz zaman ulaşabilirsiniz.
+            </p>
+          </div>
+
+          <div class="contact-links-grid">
+            <!-- Okul / Kişisel E-posta -->
+            <a href="mailto:ornek@yeniyuzyil.edu.tr" class="contact-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <div class="contact-item-info">
+                <span class="contact-item-label" data-tr="E-posta" data-en="Email">E-posta</span>
+                <span class="contact-item-val"><span class="placeholder-badge">[okul-epostaniz@yeniyuzyil.edu.tr]</span></span>
+              </div>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="#" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              <div class="contact-item-info">
+                <span class="contact-item-label">LinkedIn</span>
+                <span class="contact-item-val"><span class="placeholder-badge">[LinkedIn Linkinizi Ekleyin]</span></span>
+              </div>
+            </a>
+
+            <!-- GitHub / Portfolyo -->
+            <a href="#" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              <div class="contact-item-info">
+                <span class="contact-item-label">GitHub / Kod</span>
+                <span class="contact-item-val"><span class="placeholder-badge">[GitHub Profilinizi Ekleyin]</span></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       ALT BİLGİ (FOOTER)
+       ========================================================================== -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Farah Beseiso — Mütercim ve Tercümanlık (İstanbul Yeni Yüzyıl Üniversitesi)</p>
+      <p style="margin-top: 4px; font-size: 0.78rem; color: var(--navy-subtle);" 
+         data-tr="Tüm hakları saklıdır. Sevgi ve dillerin gücüyle tasarlandı." 
+         data-en="All rights reserved. Designed with passion for languages.">
+        Tüm hakları saklıdır. Sevgi ve dillerin gücüyle tasarlandı.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT:
+       1. Açılışta Daktilo İsim Animasyonu (Typewriter Effect)
+       2. Canlı TR ⇄ EN Dil Geçiş Sistemi (Sayfa yenilenmeden)
+       ========================================================================== -->
+  <script>
+    // ----------------------------------------------------
+    // 1. DAKTİLO ETKİSİ İLE İSİM YAZDIRMA
+    // ----------------------------------------------------
+    const fullName = "Farah Beseiso";
+    const typewriterElement = document.getElementById("typewriterText");
+    let charIndex = 0;
+
+    function typeWriter() {
+      if (charIndex < fullName.length) {
+        typewriterElement.textContent += fullName.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWriter, 110); // Harf yazım hızı (milisaniye)
+      }
+    }
+
+    // Sayfa açıldığında daktilo animasyonunu başlat
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(typeWriter, 250);
+    });
+
+    // ----------------------------------------------------
+    // 2. DİL GEÇİŞ SİSTEMİ (TR ⇄ EN)
+    // ----------------------------------------------------
+    let currentLanguage = "tr";
+    const langSwitchBtn = document.getElementById("langSwitchBtn");
+    const btnLangTR = document.getElementById("btnLangTR");
+    const btnLangEN = document.getElementById("btnLangEN");
+
+    function setLanguage(lang) {
+      currentLanguage = lang;
+
+      // Buton aktiflik sınıflarını güncelle
+      if (lang === "tr") {
+        btnLangTR.classList.add("active");
+        btnLangEN.classList.remove("active");
+        document.documentElement.lang = "tr";
+      } else {
+        btnLangEN.classList.add("active");
+        btnLangTR.classList.remove("active");
+        document.documentElement.lang = "en";
+      }
+
+      // Sayfadaki data-tr ve data-en etiketine sahip tüm metinleri değiştir
+      const translatableElements = document.querySelectorAll("[data-tr][data-en]");
+      translatableElements.forEach(el => {
+        const targetText = el.getAttribute(`data-${lang}`);
+        if (targetText) {
+          // Eğer içinde placeholder-badge varsa onu koruyarak veya doğrudan metni güncelle
+          if (el.querySelector(".placeholder-badge")) {
+            // Placeholder içeriyorsa doğrudan innerHTML veya metin güncellemesi
+            el.innerHTML = targetText.replace(/\[(.*?)\]/g, '<span class="placeholder-badge">[$1]</span>');
+          } else {
+            el.textContent = targetText;
+          }
+        }
+      });
+    }
+
+    // Butona tıklandığında dili değiştir
+    langSwitchBtn.addEventListener("click", () => {
+      const newLang = currentLanguage === "tr" ? "en" : "tr";
+      setLanguage(newLang);
+    });
+  </script>
+</body>
+</html>
